@@ -1,34 +1,43 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
     <h2>Mes Réservations</h2>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Chambre</th>
-            <th>Début</th>
-            <th>Fin</th>
-            <th>Status</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        {% for r in reservations %}
+    {% if reservations is empty %}
+        <div class="alert alert-info">
+            Vous n'avez aucune réservation pour le moment.
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <td>{{ r.id }}</td>
-                <td>{{ r.room.name }}</td>
-                <td>{{ r.startDate|date('Y-m-d') }}</td>
-                <td>{{ r.endDate|date('Y-m-d') }}</td>
-                <td>
-                    {% if r.status == 'confirmed' %}
-                        <span class="badge bg-success">Confirmée</span>
-                    {% else %}
-                        <span class="badge bg-warning">En attente</span>
-                    {% endif %}
-                </td>
+                <th>ID</th>
+                <th>Chambre</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Status</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+            {% for r in reservations %}
+                <tr>
+                    <td>{{ r.id }}</td>
+                    <td>{{ r.room.name }}</td>
+                    <td>{{ r.startDate|date('d/m/Y') }}</td>
+                    <td>{{ r.endDate|date('d/m/Y') }}</td>
+                    <td>
+                        {% if r.status == 'confirmed' %}
+                            <span class="badge bg-success">Confirmée</span>
+                        {% elseif r.status == 'cancelled' %}
+                            <span class="badge bg-danger">Annulée</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">En attente</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

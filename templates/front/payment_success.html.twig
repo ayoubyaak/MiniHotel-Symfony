@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Paiement réussi ✔</h2>
-    <p>Votre réservation a été confirmée !</p>
-    <a href="{{ path('app_my_reservations') }}" class="btn btn-primary mt-3">Voir mes réservations</a>
+    <div class="text-center mt-5">
+        <h2 class="text-success">Paiement réussi ✔</h2>
+        <p class="mt-3 fs-5">Votre réservation a été confirmée avec succès.</p>
+
+        <a href="{{ path('app_my_reservations') }}" class="btn btn-primary mt-4">
+            Voir mes réservations
+        </a>
+    </div>
 {% endblock %}
