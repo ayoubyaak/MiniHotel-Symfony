@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Créer un compte</h2>
+
+    {{ form_start(form) }}
+    {{ form_row(form.fullName) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+
+    <button class="btn btn-success mt-3">Créer mon compte</button>
+    {{ form_end(form) }}
+
+{% endblock %}

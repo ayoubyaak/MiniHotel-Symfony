@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Mon Profil</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Nom :</strong> {{ user.fullName }}</li>
+        <li class="list-group-item"><strong>Email :</strong> {{ user.email }}</li>
+    </ul>
+
+    <a href="{{ path('app_my_reservations') }}" class="btn btn-primary mt-3">
+        Mes réservations
+    </a>
+{% endblock %}
